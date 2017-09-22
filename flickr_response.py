@@ -16,6 +16,12 @@ class Photo(object):
     def __str__(self):
         return "{} by {}".format(self.title,self.artist)
 
+    def __repr__(self):
+        return
+
+    def __contains__(self):
+        return
+
 with open('sample_diction.json', 'r') as f:
     sdict = f.read()
 picdict = json.loads(sdict)
