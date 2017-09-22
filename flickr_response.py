@@ -7,17 +7,16 @@ class Photo(object):
     def __init__(self, fdict):
         self.title = fdict['photo']['title']['_content']
         self.artist = fdict['photo']['owner']['username']
-        tg = []
+        self.tags = []
         for e in fdict['photo']['tags']['tag']:
-            tg.append(e['_content'])
-        self.tags = tg
+            self.tags.append(e['_content'])
         self.dateuploaded = fdict['photo']['dateuploaded']
-
+        self.ID = fdict['photo']['id']
     def __str__(self):
-        return "{} by {}".format(self.title,self.artist)
+        return "{0} by {1}".format(self.title,self.artist)
 
     def __repr__(self):
-        return
+        return "Photo(title={0}, artist={1}, tags={2}, date={3}, ID={4})".format(self.title,self.artist,self.tags,self.dateuploaded,self.ID)
 
     def __contains__(self):
         return
@@ -28,4 +27,4 @@ picdict = json.loads(sdict)
 
 pic = Photo(picdict)
 
-print (pic)
+print (repr(pic))
